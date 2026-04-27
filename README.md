@@ -1,4 +1,4 @@
-# Welcome to _Spring Polyglot_!
+# Welcome to _Spring Polyglot_
 
 [![CI](https://github.com/patbaumgartner/spring-polyglot/actions/workflows/ci.yml/badge.svg)](https://github.com/patbaumgartner/spring-polyglot/actions/workflows/ci.yml)
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](LICENSE)
@@ -42,32 +42,32 @@ test actually runs: see [DeutscheIntegrationsTests][] for details.
 
 ```java
 @Kontextkonfiguration(
-	Konfigurationsklassen = { LokaleTestkonfiguration.class },
-	XmlDateienOderGroovySkripte = { /* keine */ },
-	RessourcenErben = falsch,
-	Initialisierungsprogramme = { /* keine */ },
-	InitialisierungsprogrammeErben = falsch,
-	Ladeprogramm = AnnotationConfigContextLoader.class,
-	Name = "In diesem Fall spielt der Name keine Rolle."
+ Konfigurationsklassen = { LokaleTestkonfiguration.class },
+ XmlDateienOderGroovySkripte = { /* keine */ },
+ RessourcenErben = falsch,
+ Initialisierungsprogramme = { /* keine */ },
+ InitialisierungsprogrammeErben = falsch,
+ Ladeprogramm = AnnotationConfigContextLoader.class,
+ Name = "In diesem Fall spielt der Name keine Rolle."
 )
 public final class DeutscheIntegrationsTests {
 
-	@AutomatischVerdrahtet(erforderlich = jawohl)
-	private String Nachricht;
+ @AutomatischVerdrahtet(erforderlich = jawohl)
+ private String Nachricht;
 
-	@Test
-	public void nachrichtPrüfen() {
-		esWirdErwartetDass(Nachricht, istGleich("Alles in Ordnung"));
-	}
+ @Test
+ public void nachrichtPrüfen() {
+  esWirdErwartetDass(Nachricht, istGleich("Alles in Ordnung"));
+ }
 
-	@Konfiguration
-	static class LokaleTestkonfiguration {
+ @Konfiguration
+ static class LokaleTestkonfiguration {
 
-		@Bohne
-		String Nachricht() {
-			return "Alles in Ordnung";
-		}
-	}
+  @Bohne
+  String Nachricht() {
+   return "Alles in Ordnung";
+  }
+ }
 
 }
 ```
@@ -77,17 +77,17 @@ public final class DeutscheIntegrationsTests {
 Yes, this test actually runs: see [HipsterTests][] for details.
 
 ```java
-@RunWith(SpringFoo.class)
+@ExtendWith(SpringExtension.class)
 @Konfigz(klassez = Konfig.class, listenToYoParents = false, whoDat = "Not I said the fly")
 public class HipsterTests {
 
-	@Autowired
-	String message;
+ @Autowired
+ String message;
 
-	@Test
-	public void checkItOut() {
-		assertEquals("Keepin' it real!", message);
-	}
+ @Test
+ public void checkItOut() {
+  assertEquals("Keepin' it real!", message);
+ }
 
 }
 ```
@@ -108,6 +108,7 @@ accepted, we therefore ask that you sign the [Contributor License Agreement][] a
 document that you have done so in the commit message or comments of your pull request.
 
 ## License
+
 The Spring Polyglot project is released under version 2.0 of the [Apache License][].
 
 # See Also
@@ -127,41 +128,50 @@ a cross-platform, self-contained bootstrap mechanism for the build.
 ## Prerequisites
 
 - [Git][]
-- [JDK 8][JDK8] update 60 or later
-- [Spring Framework][] 4.2.1 or later
+- [JDK 17][JDK17] or later
+- [Spring Framework][] 7.x (managed by Spring Boot 4.x)
 
-Annotations in the `spring-polyglot` project rely on `@AliasFor` which
-was introduced in Spring Framework 4.2 and therefore require at least Spring
-Framework 4.2.1 to work properly. 
+Annotations in the `spring-polyglot` project rely on `@AliasFor`, which has
+been part of the Spring Framework since 4.2. The current build targets
+Spring Framework 7 and Spring Boot 4 and requires JDK 17+.
 
-Be sure that your `JAVA_HOME` environment variable points to the `jdk1.8.0` folder
-extracted from the JDK download.
+Make sure that your `JAVA_HOME` environment variable points to a JDK 17 (or
+newer) installation.
 
 ## Compile and Test
 
-Build all JARs, distribution ZIP files, and docs:
+Build all artifacts and run all tests:
 
-`./gradlew build`
+```bash
+./gradlew build
+```
 
-## Install `spring-polyglot` in local Maven repository
+Run only the tests:
 
-`./gradlew install`
+```bash
+./gradlew test
+```
+
+## Publish to local Maven repository
+
+```bash
+./gradlew publishToMavenLocal
+```
 
 ----
 
-[Apache License]: http://www.apache.org/licenses/LICENSE-2.0
-[Gradle]: http://gradle.org
-[Git]: http://help.github.com/set-up-git-redirect
-[JDK8]: http://www.oracle.com/technetwork/java/javase/downloads
-[Spring Framework]: http://projects.spring.io/spring-framework/
+[Apache License]: https://www.apache.org/licenses/LICENSE-2.0
+[Gradle]: https://gradle.org
+[Git]: https://help.github.com/set-up-git-redirect
+[JDK17]: https://adoptium.net/
+[Spring Framework]: https://spring.io/projects/spring-framework
 [Spring Annotation Programming Model]: https://github.com/spring-projects/spring-framework/wiki/Spring-Annotation-Programming-Model
 [Spring Composed]: https://github.com/sbrannen/spring-composed
-[pull requests]: http://help.github.com/send-pull-requests
-[Contributor License Agreement]: https://github.com/spring-projects/spring-framework/blob/master/CONTRIBUTING.md#sign-the-contributor-license-agreement
+[pull requests]: https://help.github.com/send-pull-requests
+[Contributor License Agreement]: https://github.com/spring-projects/spring-framework/blob/main/CONTRIBUTING.md#sign-the-contributor-license-agreement
 
-[HipsterTests]: https://github.com/sbrannen/spring-polyglot/blob/master/src/test/java/org/springframework/polyglot/hipster/HipsterTests.java
-[DeutscheIntegrationsTests]: https://github.com/sbrannen/spring-polyglot/blob/master/src/test/java/org/springframework/polyglot/de/DeutscheIntegrationsTests.java
-[JapaneseIntegrationTests]: https://github.com/sbrannen/spring-polyglot/blob/master/src/test/java/org/springframework/polyglot/ja/JapaneseIntegrationTests.java
-[SushiTests]: https://github.com/sbrannen/spring-polyglot/blob/master/src/test/java/org/springframework/polyglot/ja/SushiTests.java
-[PolskieTestyIntegracijne]: https://github.com/sbrannen/spring-polyglot/blob/master/src/test/java/org/springframework/polyglot/pl/PolskieTestyIntegracijne.java
-
+[HipsterTests]: src/test/java/org/springframework/polyglot/hipster/HipsterTests.java
+[DeutscheIntegrationsTests]: src/test/java/org/springframework/polyglot/de/DeutscheIntegrationsTests.java
+[JapaneseIntegrationTests]: src/test/java/org/springframework/polyglot/ja/JapaneseIntegrationTests.java
+[SushiTests]: src/test/java/org/springframework/polyglot/ja/SushiTests.java
+[PolskieTestyIntegracijne]: src/test/java/org/springframework/polyglot/pl/PolskieTestyIntegracijne.java
