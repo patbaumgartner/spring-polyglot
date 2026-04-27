@@ -1,5 +1,11 @@
 # Welcome to _Spring Polyglot_!
 
+[![CI](https://github.com/patbaumgartner/spring-polyglot/actions/workflows/ci.yml/badge.svg)](https://github.com/patbaumgartner/spring-polyglot/actions/workflows/ci.yml)
+[![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](LICENSE)
+[![Spring Boot](https://img.shields.io/badge/Spring%20Boot-4.0.6-brightgreen.svg)](https://spring.io/projects/spring-boot)
+[![Spring Framework](https://img.shields.io/badge/Spring%20Framework-7.0.7-brightgreen.svg)](https://spring.io/projects/spring-framework)
+[![Java](https://img.shields.io/badge/Java-17%2B-orange.svg)](https://adoptium.net/)
+
 This repository is a collection of "just for fun" _composed annotations_
 for use with the [Spring Framework][].
 
