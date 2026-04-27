@@ -18,14 +18,14 @@ package org.springframework.polyglot.de;
 
 import static org.springframework.polyglot.de.TestWerkzeuge.*;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.polyglot.de.DeutscheIntegrationsTests.LokaleTestkonfiguration;
 import org.springframework.polyglot.de.beans.factory.annotation.AutomatischVerdrahtet;
 import org.springframework.polyglot.de.context.annotation.Bohne;
 import org.springframework.polyglot.de.context.annotation.Konfiguration;
 import org.springframework.polyglot.de.test.context.Kontextkonfiguration;
-import org.springframework.polyglot.de.test.context.junit4.SpringJUnit4IntegrationsTestUnterstützung;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
 /**
@@ -34,28 +34,21 @@ import org.springframework.test.context.support.AnnotationConfigContextLoader;
  * @author Sam Brannen
  * @since 1.0
  */
-@RunWith(SpringJUnit4IntegrationsTestUnterstützung.class)
+@ExtendWith(SpringExtension.class)
 // Wir müssen nicht alle Attribute auflisten, aber... sicher ist sicher!
-@Kontextkonfiguration(
-	Konfigurationsklassen = { LokaleTestkonfiguration.class },
-	XmlDateienOderGroovySkripte = { /* keine */ },
-	RessourcenErben = falsch,
-	Initialisierungsprogramme = { /* keine */ },
-	InitialisierungsprogrammeErben = falsch,
-	Ladeprogramm = AnnotationConfigContextLoader.class,
-	Name = "In diesem Fall spielt der Name keine Rolle."
-)
+@Kontextkonfiguration(Konfigurationsklassen = {
+		LokaleTestkonfiguration.class }, XmlDateienOderGroovySkripte = { /* keine */ }, RessourcenErben = falsch, Initialisierungsprogramme = { /*
+																																				 * keine
+																																				 */ }, InitialisierungsprogrammeErben = falsch, Ladeprogramm = AnnotationConfigContextLoader.class, Name = "In diesem Fall spielt der Name keine Rolle.")
 public final class DeutscheIntegrationsTests {
 
 	@AutomatischVerdrahtet(erforderlich = jawohl)
 	private String Nachricht;
 
-
 	@Test
 	public void nachrichtPrüfen() {
 		esWirdErwartetDass(Nachricht, istGleich("Alles in Ordnung"));
 	}
-
 
 	@Konfiguration
 	static class LokaleTestkonfiguration {
