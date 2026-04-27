@@ -16,7 +16,7 @@
 
 package org.springframework.polyglot.pl;
 
-import static org.junit.Assert.*;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 import org.hamcrest.Matcher;
 import org.hamcrest.core.IsEqual;
@@ -40,7 +40,7 @@ public class NarzędziaTestowne {
 	}
 
 	public static <T> Matcher<T> jestRówno(T operand) {
-		return IsEqual.<T> equalTo(operand);
+		return IsEqual.<T>equalTo(operand);
 	}
 
 }

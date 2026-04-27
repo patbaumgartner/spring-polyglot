@@ -16,18 +16,18 @@
 
 package org.springframework.polyglot.ja;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.polyglot.ja.beans.factory.annotation.オートワイヤリング;
 import org.springframework.polyglot.ja.context.annotation.コンフィグ;
 import org.springframework.polyglot.ja.context.annotation.ビーン;
-import org.springframework.polyglot.ja.test.context.junit4.スプリングJUnit4テストランナー;
 import org.springframework.polyglot.ja.test.context.すしコンフィグ;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.springframework.polyglot.ja.SushiTests.SushiConfig;
 
 /**
@@ -36,7 +36,7 @@ import static org.springframework.polyglot.ja.SushiTests.SushiConfig;
  * @author Tadaya Tsuyukubo
  * @since 1.0
  */
-@RunWith(スプリングJUnit4テストランナー.class)
+@ExtendWith(SpringExtension.class)
 @すしコンフィグ(新鮮なネタ = SushiConfig.class, さび抜き = false, おまかせ = true, 今日のオススメ = "まぐろがうまいよ！")
 public class SushiTests {
 
@@ -57,7 +57,7 @@ public class SushiTests {
 		for (Sushi sushi : 今日のネタ) {
 			total += sushi.price;
 		}
-		assertEquals("合計", 800, total);
+		assertEquals(800, total, "合計");
 	}
 
 	@コンフィグ

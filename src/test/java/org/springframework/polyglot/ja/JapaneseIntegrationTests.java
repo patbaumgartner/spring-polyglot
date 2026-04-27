@@ -16,16 +16,16 @@
 
 package org.springframework.polyglot.ja;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.polyglot.ja.JapaneseIntegrationTests.ロケールテストコンフィグ;
 import org.springframework.polyglot.ja.beans.factory.annotation.オートワイヤリング;
 import org.springframework.polyglot.ja.context.annotation.コンフィグ;
 import org.springframework.polyglot.ja.context.annotation.ビーン;
 import org.springframework.polyglot.ja.test.context.コンテキストコンフィグ;
-import org.springframework.polyglot.ja.test.context.junit4.スプリングJUnit4テストランナー;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
 /**
@@ -34,15 +34,8 @@ import org.springframework.test.context.support.AnnotationConfigContextLoader;
  * @author Tadaya Tsuyukubo
  * @since 1.0
  */
-@RunWith(スプリングJUnit4テストランナー.class)
-@コンテキストコンフィグ(
-		コンフィグクラス = ロケールテストコンフィグ.class,
-		イニシャライザ = {},
-		イニシャライザを継承する = false,
-		リソースロケーションを継承する = false,
-		コンテキストローダー = AnnotationConfigContextLoader.class,
-		名前 = "日本語のテスト"
-)
+@ExtendWith(SpringExtension.class)
+@コンテキストコンフィグ(コンフィグクラス = ロケールテストコンフィグ.class, イニシャライザ = {}, イニシャライザを継承する = false, リソースロケーションを継承する = false, コンテキストローダー = AnnotationConfigContextLoader.class, 名前 = "日本語のテスト")
 public class JapaneseIntegrationTests {
 
 	@オートワイヤリング(必須 = true)
@@ -55,7 +48,8 @@ public class JapaneseIntegrationTests {
 
 	@コンフィグ
 	static class ロケールテストコンフィグ {
-		@ビーン String ほげ() {
+		@ビーン
+		String ほげ() {
 			return "ほげほげ";
 		}
 	}

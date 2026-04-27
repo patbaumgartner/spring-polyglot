@@ -22,7 +22,6 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-import org.springframework.beans.factory.annotation.Autowire;
 import org.springframework.beans.factory.support.AbstractBeanDefinition;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.annotation.AliasFor;
@@ -41,9 +40,6 @@ public @interface Bohne {
 
 	@AliasFor(annotation = Bean.class, attribute = "name")
 	String[] Name() default {};
-
-	@AliasFor(annotation = Bean.class, attribute = "autowire")
-	Autowire AutomatischVerdrahten() default Autowire.NO;
 
 	@AliasFor(annotation = Bean.class, attribute = "initMethod")
 	String Einrichtungsmethode() default "";

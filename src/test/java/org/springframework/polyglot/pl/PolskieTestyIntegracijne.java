@@ -18,17 +18,16 @@ package org.springframework.polyglot.pl;
 
 import static org.springframework.polyglot.pl.NarzędziaTestowne.*;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.polyglot.pl.PolskieTestyIntegracijne.KonfiguracjiaLokalna;
 import org.springframework.polyglot.pl.beans.factory.annotation.AutomatycznieZakablowanie;
 import org.springframework.polyglot.pl.context.annotation.Konfiguracja;
 import org.springframework.polyglot.pl.context.annotation.Kurwa;
 import org.springframework.polyglot.pl.context.annotation.Ziarno;
 import org.springframework.polyglot.pl.test.context.KonfiguracjaKontekstowa;
-import org.springframework.polyglot.pl.test.context.junit4.WspomaganieTestoweSpringJUnit4;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
-
 
 /**
  * Polskie testy integracyjne.
@@ -36,14 +35,8 @@ import org.springframework.test.context.support.AnnotationConfigContextLoader;
  * @author Mark Przemysław Paluch
  * @since 1.0
  */
-@RunWith(WspomaganieTestoweSpringJUnit4.class)
-@KonfiguracjaKontekstowa(
-    klasyKonfiguracyjne = KonfiguracjiaLokalna.class,
-	plikiXmlLubScenariuszGroovy = { /* Nie ma */ },
-	dziedziczyćPołożenia = nie,
-	dziedziczyćInicjatorów = no,
-	ładowarka = AnnotationConfigContextLoader.class
-)
+@ExtendWith(SpringExtension.class)
+@KonfiguracjaKontekstowa(klasyKonfiguracyjne = KonfiguracjiaLokalna.class, plikiXmlLubScenariuszGroovy = { /* Nie ma */ }, dziedziczyćPołożenia = nie, dziedziczyćInicjatorów = no, ładowarka = AnnotationConfigContextLoader.class)
 @Kurwa
 public class PolskieTestyIntegracijne {
 
