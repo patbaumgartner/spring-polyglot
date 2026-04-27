@@ -16,16 +16,16 @@
 
 package org.springframework.polyglot.hipster;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.polyglot.hipster.HipsterTests.Konfig;
 import org.springframework.polyglot.hipster.test.context.Konfigz;
-import org.springframework.polyglot.hipster.test.context.junit4.SpringFoo;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 /**
  * Hipster integration tests.
@@ -33,19 +33,17 @@ import org.springframework.polyglot.hipster.test.context.junit4.SpringFoo;
  * @author Sam Brannen
  * @since 1.0
  */
-@RunWith(SpringFoo.class)
+@ExtendWith(SpringExtension.class)
 @Konfigz(klassez = Konfig.class, listenToYoParents = false, whoDat = "Not I said the fly")
 public class HipsterTests {
 
 	@Autowired
 	String message;
 
-
 	@Test
 	public void checkItOut() {
 		assertEquals("Keepin' it real!", message);
 	}
-
 
 	@Configuration
 	static class Konfig {

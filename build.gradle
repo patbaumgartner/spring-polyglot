@@ -1,6 +1,6 @@
 plugins {
-    id 'org.springframework.boot' version '3.0.2'
-    id 'io.spring.dependency-management' version '1.0.12.RELEASE'
+    id 'org.springframework.boot' version '4.0.6'
+    id 'io.spring.dependency-management' version '1.1.7'
     id 'java'
     id 'eclipse'
     id 'idea'
@@ -8,7 +8,11 @@ plugins {
 }
 
 jar {
-    baseName = 'spring-polyglot'
+    archiveBaseName = 'spring-polyglot'
+}
+
+bootJar {
+    enabled = false
 }
 
 group = 'org.springframework.polyglot'
@@ -21,9 +25,13 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-jdbc'
     implementation 'org.springframework.boot:spring-boot-starter-web'
-    implementation 'org.springframework.boot:spring-boot-starter-test'
+    implementation 'org.springframework:spring-test'
 
-    implementation 'junit:junit:4.13.2'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+test {
+    useJUnitPlatform()
 }
 
 compileJava {
@@ -45,12 +53,12 @@ javadoc {
 }
 
 task sourcesJar(type: Jar, dependsOn: classes) {
-	classifier = 'sources'
+	archiveClassifier = 'sources'
 	from sourceSets.main.allSource
 }
 
 task javadocJar(type: Jar) {
-	classifier = 'javadoc'
+	archiveClassifier = 'javadoc'
 	from javadoc
 }
 

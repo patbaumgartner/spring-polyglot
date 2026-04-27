@@ -16,7 +16,7 @@
 
 package org.springframework.polyglot.de;
 
-import static org.junit.Assert.*;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 import org.hamcrest.Matcher;
 import org.hamcrest.core.IsEqual;
@@ -35,13 +35,12 @@ public final class TestWerkzeuge {
 
 	public static final boolean falsch = false;
 
-
 	public static <T> void esWirdErwartetDass(T actual, Matcher<? super T> matcher) {
 		assertThat("", actual, matcher);
 	}
 
 	public static <T> Matcher<T> istGleich(T operand) {
-		return IsEqual.<T> equalTo(operand);
+		return IsEqual.<T>equalTo(operand);
 	}
 
 }
