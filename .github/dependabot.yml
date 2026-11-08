@@ -28,3 +28,8 @@ updates:
   commit-message:
     prefix: ci(deps)
     include: scope
+groups:
+  multi-step-actions:
+    patterns:
+    - github/codeql-action/*
+    - gradle/actions/*
